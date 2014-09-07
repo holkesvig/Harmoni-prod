@@ -1,0 +1,125 @@
+<!doctype html>
+<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+<html class="no-js" lang="en" data-useragent="Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Trident/6.0)" ng-app="harmoni">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Harmoni | Group Music Player</title>
+  <link rel="icon" type="image/png" href="img/favicon.png">
+  <meta name="description" content="Documentation and reference library for ZURB Foundation. JavaScript, CSS, components, grid and more."/>
+  <meta name="author" content="ZURB, inc. ZURB network also includes zurb.com"/>
+  <meta name="copyright" content="ZURB, inc. Copyright (c) 2014"/>
+  <link rel="stylesheet" href="css/foundation.css"/>
+  <link href='http://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+  <script src="../assets/js/modernizr.js"></script>
+  <link rel="stylesheet" href="css/player.css"/>
+</head>
+<body ng-controller="PlayerCtrl">
+
+  <nav class="top-bar" data-topbar role="navigation">
+    <div class="icon-bar four-up">
+      <input type="search" ng-modl="artist" placeholder="Search for your favorite artist. Then select 'New Station.'"/>
+      <a class="item" id="create" ng-click="create(artist)">
+        <img style="height:25px; width: 25px; min width: 25px" src="img/nav.png">
+        <label>New Station</label>
+      </a>
+      <a class="item">
+        <img style="height:25px; width: 25px; min width: 25px" ng-click="upVote()" src="img/favorites.png">
+        <label>Like</label>
+      </a>
+      <a class="item">
+        <img style="height:25px; width: 25px; min width: 25px" ng-click="downVote()" src="img/dislike.png">
+        <label>Dislike</label>
+      </a>
+      <a class="item">
+        <img style="height:25px; width: 25px; min width: 25px" ng-click="nextSong()" src="img/next.png">
+        <label>Next</label>
+      </a>
+    </div>
+  </nav>  
+
+      <a href="#" id="play" class="ion-ios7-play"></a>
+    </div>
+  </div>
+</div>
+      <p style="text-center" ng-repeat="look in lookahead">
+        {{look.title}}
+      </p>
+      <div class="large-8 columns" id="player"></div>
+    </div>
+    
+    <div class="medium-12 columns chat">
+      <div class="medium-12 columns chat-header gradient">
+        <div class="medium-12 columns chat-name gradient">
+          Hi, <span>{{user.displayName}}</span>. Say hello!
+        </div>
+        <div class="chat-message-background" >
+          <div class="chat-messages">
+            <div class="medium-12 columns chat-message" ng-repeat="message in user.chatRoom.messages" >
+              <td class="medium-9 columns" style="width:100px">
+                <div class="chat-content">
+                  <span style="font-weight:bold;">{{message.name}}</span>: 
+                  <span>{{message.message}}</span>  
+                  <span class="chat-timestamp">{{message.timestamp | date:'HH:mm:ss a'}}</span>
+                </div>
+              </td>
+            </div>
+            <div id="chatbottom"></div>
+          </div>
+        </div>
+        <input ng-model="user.message" ng-keyup="sendMessage($event)" type="text" class="chat-textbox" placeholder="Chat Now!" />
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+      <div class="row">
+        <div class="medium-6 columns">
+          <br>
+          <p style="color:#FFFFFF">Made with love. Powered by Caffeine.</p>
+        </div>
+      </div>
+  </footer>
+  <script>
+  document.write('<script src=js/vendor/' +
+    ('__proto__' in {} ? 'zepto' : 'jquery') +
+    '.js><\/script>')
+  </script>
+  <script src="js/vendor/jquery.js"></script>
+  <script src="js/foundation.min.js"></script>
+  <script src="http://connect.soundcloud.com/sdk.js"></script>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/firebase/firebase.js"></script>
+  <script src="bower_components/firebase-simple-login/firebase-simple-login.js"></script>
+  <script src="bower_components/angularfire/dist/angularfire.min.js"></script>
+  <script src="bower_components/firechat/firechat-default.js"></script>
+  <script src="https://rawgithub.com/Luegg/angularjs-scroll-glue/master/src/scrollglue.js"></script>
+  <script src="scripts/controllers/app.js"></script>
+  <script src="scripts/controllers/playerCtrl.js"></script>
+  <script type="text/javascript" src="http://stratus.sc/stratus.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function(){
+    $stratus({
+      align: 'top',
+      auto_play: true,
+      download: false,
+      links: 'http://soundcloud.com/qotsa',
+      random: true
+    });
+  });
+</script>
+  <script>
+  $(document).foundation();
+  </script>
+  <script src="js/vendor/jquery.js"></script>
+  <script src="js/foundation/foundation.js"></script>
+  <script>
+  $(document).foundation();
+
+  var doc = document.documentElement;
+  doc.setAttribute('data-useragent', navigator.userAgent);
+  </script>
+</body>
+</html>
